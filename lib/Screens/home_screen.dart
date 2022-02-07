@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:worker_app/ResponsiveDesign/dimensions.dart';
 import 'package:worker_app/ResponsiveDesign/responsive_widget.dart';
+import 'package:worker_app/Screens/seller_gig_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   // ignore_for_file: prefer_const_constructors
@@ -61,168 +64,181 @@ class _HomeScreenState extends State<HomeScreen> {
                   portrait: Column(
                     children: [
                       for (int i = 0; i < 10; i++)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 8),
-                          child: Container(
-                            height: height(context) / 1.8,
-                            width: width(context),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: height(context) / 2.15,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFF4CAF50 + 30),
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20))),
-                                  child: Stack(
-                                    fit: StackFit.expand,
-                                    children: [
-                                      ClipRRect(
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return SellerGigScreen();
+                            }));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                            child: Container(
+                              height: height(context) / 1.8,
+                              width: width(context),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: height(context) / 2.15,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xFF4CAF50 + 30),
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20)),
-                                        child: Image.network(
-                                          services_links[i],
-                                          fit: BoxFit.cover,
+                                            topRight: Radius.circular(20))),
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20)),
+                                          child: Image.network(
+                                            services_links[i],
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        height: height(context) / 2.15,
-                                        decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                              Colors.black.withOpacity(0.0),
-                                              Colors.black.withOpacity(0.1),
-                                              Colors.black.withOpacity(0.9),
-                                            ])),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Align(
-                                              alignment: Alignment.centerRight,
-                                              child: Padding(
+                                        Container(
+                                          height: height(context) / 2.15,
+                                          decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                Colors.black.withOpacity(0.0),
+                                                Colors.black.withOpacity(0.1),
+                                                Colors.black.withOpacity(0.9),
+                                              ])),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: height(context) *
+                                                          1.5 /
+                                                          100,
+                                                      right: width(context) *
+                                                          3 /
+                                                          100),
+                                                  child: Container(
+                                                      // padding: EdgeInsets.all(0),
+                                                      decoration: BoxDecoration(
+                                                        //   color: Colors.black
+                                                        //       .withOpacity(0.4),
+                                                        //  color: Colors.white,
+                                                        borderRadius:
+                                                            // BorderRadius.all(
+                                                            //     Radius.circular(
+                                                            //         20))
+                                                            BorderRadius
+                                                                .circular(50),
+                                                      ),
+                                                      child:
+                                                          //  Text(
+                                                          //   '!',
+                                                          //   style: TextStyle(
+                                                          //       color: Colors.white,
+                                                          //       fontWeight:
+                                                          //           FontWeight.w600),
+                                                          // ),
+                                                          Icon(
+                                                        Icons.info,
+                                                        color: Colors.white,
+                                                      )),
+                                                ),
+                                              ),
+                                              Padding(
                                                 padding: EdgeInsets.only(
-                                                    top: height(context) *
-                                                        1.5 /
+                                                    left: width(context) *
+                                                        3 /
                                                         100,
                                                     right: width(context) *
                                                         3 /
-                                                        100),
-                                                child: Container(
-                                                    // padding: EdgeInsets.all(0),
-                                                    decoration: BoxDecoration(
-                                                      //   color: Colors.black
-                                                      //       .withOpacity(0.4),
-                                                      //  color: Colors.white,
-                                                      borderRadius:
-                                                          // BorderRadius.all(
-                                                          //     Radius.circular(
-                                                          //         20))
-                                                          BorderRadius.circular(
-                                                              50),
-                                                    ),
-                                                    child:
-                                                        //  Text(
-                                                        //   '!',
-                                                        //   style: TextStyle(
-                                                        //       color: Colors.white,
-                                                        //       fontWeight:
-                                                        //           FontWeight.w600),
-                                                        // ),
-                                                        Icon(
-                                                      Icons.info,
-                                                      color: Colors.white,
-                                                    )),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left:
-                                                      width(context) * 3 / 100,
-                                                  right:
-                                                      width(context) * 3 / 100,
-                                                  bottom: height(context) *
-                                                      2 /
-                                                      100),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                // ignore: prefer_const_literals_to_create_immutables
-                                                children: [
-                                                  Text(
-                                                    'House Electrician',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 27,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height(context) *
-                                                        0.5 /
                                                         100,
-                                                  ),
-                                                  // Row(
-                                                  //   // ignore: prefer_const_literals_to_create_immutables
-                                                  //   children: [
-                                                  Text(
-                                                    'Electrician',
-                                                    style: TextStyle(
-                                                        color: Colors.grey,
-                                                        fontSize: 18),
-                                                  ),
-                                                  //     Expanded(child: SizedBox()),
-                                                  //     Text(
-                                                  //       '2 km away',
-                                                  //       style: TextStyle(
-                                                  //           color: Colors.grey,
-                                                  //           fontSize: 14),
-                                                  //     ),
-                                                  //   ],
-                                                  // )
-                                                ],
+                                                    bottom: height(context) *
+                                                        2 /
+                                                        100),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  // ignore: prefer_const_literals_to_create_immutables
+                                                  children: [
+                                                    Text(
+                                                      'House Electrician',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 27,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    SizedBox(
+                                                      height: height(context) *
+                                                          0.5 /
+                                                          100,
+                                                    ),
+                                                    // Row(
+                                                    //   // ignore: prefer_const_literals_to_create_immutables
+                                                    //   children: [
+                                                    Text(
+                                                      'Electrician',
+                                                      style: TextStyle(
+                                                          color: Colors.grey,
+                                                          fontSize: 18),
+                                                    ),
+                                                    //     Expanded(child: SizedBox()),
+                                                    //     Text(
+                                                    //       '2 km away',
+                                                    //       style: TextStyle(
+                                                    //           color: Colors.grey,
+                                                    //           fontSize: 14),
+                                                    //     ),
+                                                    //   ],
+                                                    // )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                // ignore: sized_box_for_whitespace
-                                Container(
-                                  // height: double.infinity,
-                                  height: (height(context) / 1.8) -
-                                      (height(context) / 2.15),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: width(context) * 4 / 100),
-                                    child: SellerDescription(
-                                      sellerName: 'Talha Ashraf',
-                                      bottomCredential: '2 km away',
-                                      profilePic: null,
-                                      avatarRadius: 20.0,
-                                      heightBetween:
-                                          height(context) * 0.25 / 100,
-                                      nameWeight: FontWeight.w600,
+                                            ],
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ),
-                                )
-                              ],
+                                  // ignore: sized_box_for_whitespace
+                                  Container(
+                                    // height: double.infinity,
+                                    height: (height(context) / 1.8) -
+                                        (height(context) / 2.15),
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: width(context) * 4 / 100),
+                                      child: SellerDescription(
+                                        sellerName: 'Talha Ashraf',
+                                        bottomCredential: '2 km away',
+                                        profilePic: null,
+                                        avatarRadius: 20.0,
+                                        heightBetween:
+                                            height(context) * 0.25 / 100,
+                                        nameWeight: FontWeight.w600,
+                                        nameFontSize: 17.0,
+                                        credentialFontSize: 14,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                  color: Color(0xFFD1E3DD).withOpacity(0.8),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
                             ),
-                            decoration: BoxDecoration(
-                                color: Color(0xFFD1E3DD).withOpacity(0.8),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
                           ),
                         )
                     ],
@@ -261,14 +277,14 @@ class _HomeScreenState extends State<HomeScreen> {
             AnimatedContainer(
               duration: Duration(milliseconds: 200),
               curve: Curves.easeIn,
-              height: (showBar) ? 60 : 0,
+              height: (showBar) ? 56 : 0,
               child: Material(
                 elevation: 16,
                 color: Colors.white,
                 child: Row(
                   children: [
                     SizedBox(
-                      width: width(context) * 4 / 100,
+                      width: width(context) * 5 / 100,
                     ),
                     Image.asset(
                       'images/menu.png',
@@ -285,7 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 27.5,
                     ),
                     SizedBox(
-                      width: width(context) * 4 / 100,
+                      width: width(context) * 5 / 100,
                     ),
                   ],
                 ),
@@ -300,15 +316,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
 // ignore: must_be_immutable
 class SellerDescription extends StatelessWidget {
-  SellerDescription({
-    Key? key,
-    this.bottomCredential,
-    this.profilePic,
-    this.sellerName,
-    this.avatarRadius,
-    this.heightBetween,
-    this.nameWeight,
-  }) : super(key: key);
+  SellerDescription(
+      {Key? key,
+      this.bottomCredential,
+      this.profilePic,
+      this.sellerName,
+      this.avatarRadius,
+      this.heightBetween,
+      this.nameWeight,
+      this.newMessageIndicator,
+      this.newMessageTime,
+      this.credentialFontSize,
+      this.nameFontSize})
+      : super(key: key);
 
   var sellerName;
   var bottomCredential;
@@ -316,6 +336,10 @@ class SellerDescription extends StatelessWidget {
   var avatarRadius;
   var heightBetween;
   var nameWeight;
+  Widget? newMessageTime;
+  Widget? newMessageIndicator;
+  double? nameFontSize;
+  double? credentialFontSize;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -334,34 +358,52 @@ class SellerDescription extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              // ignore: prefer_const_literals_to_create_immutables
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                Text(
-                  sellerName,
-                  style: TextStyle(fontSize: 17, fontWeight: nameWeight),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: height(context) * 0.3 / 100,
-                      left: width(context) * 1 / 100),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.green,
-                    radius: 4,
+            Container(
+              width: width(context) * 72.5 / 100,
+              // color: Colors.orange,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    sellerName,
+                    style: TextStyle(
+                        fontSize: nameFontSize, fontWeight: nameWeight),
                   ),
-                )
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: height(context) * 0.3 / 100,
+                        left: width(context) * 1 / 100),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.green,
+                      radius: 4,
+                    ),
+                  ),
+                  Expanded(child: Container()),
+                  (newMessageTime == null) ? Container() : newMessageTime!,
+                ],
+              ),
             ),
             SizedBox(
               height: heightBetween,
             ),
-            Text(
-              // 'Last online: 3 min ago',
-              bottomCredential,
-              style:
-                  TextStyle(color: Colors.black.withOpacity(0.4), fontSize: 14),
+            Container(
+              width: width(context) * 72.5 / 100,
+              // color: Colors.orange,
+              child: Row(
+                children: [
+                  Text(
+                    // 'Last online: 3 min ago',
+                    bottomCredential,
+                    style: TextStyle(
+                        color: Colors.black.withOpacity(0.4),
+                        fontSize: credentialFontSize),
+                  ),
+                  Expanded(child: Container()),
+                  (newMessageIndicator == null)
+                      ? Container()
+                      : newMessageIndicator!,
+                ],
+              ),
             )
           ],
         )

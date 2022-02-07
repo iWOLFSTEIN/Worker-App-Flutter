@@ -278,9 +278,12 @@ class _SellerGigScreenState extends State<SellerGigScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Container(
-                color: Color(0xFFDAE9E4),
+                // color: Color(0xFFDAE9E4),
                 width: width(context),
                 padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: Color(0xFFDAE9E4),
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -296,7 +299,6 @@ class _SellerGigScreenState extends State<SellerGigScreen> {
                     ),
                     Column(
                       children: [
-                       
                         SellerDescription(
                           sellerName: 'Talha Ashraf',
                           bottomCredential: 'Member since March 2021',
@@ -304,6 +306,8 @@ class _SellerGigScreenState extends State<SellerGigScreen> {
                           avatarRadius: 20.0,
                           heightBetween: height(context) * 0.5 / 100,
                           nameWeight: FontWeight.w400,
+                          nameFontSize: 17,
+                          credentialFontSize: 14,
                         ),
                         SizedBox(
                           height: height(context) * 2.5 / 100,
@@ -321,7 +325,6 @@ class _SellerGigScreenState extends State<SellerGigScreen> {
                             ),
                           ),
                         ),
-                       
                       ],
                     ),
                   ],
@@ -342,12 +345,12 @@ class _SellerGigScreenState extends State<SellerGigScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 12),
       child: Container(
-        color: Color(0xFFDAE9E4),
+        // color: Color(0xFFDAE9E4),
         width: width(context),
         padding: EdgeInsets.all(16),
-        // decoration: BoxDecoration(
-        //     color: Color(0xFFDAE9E4),
-        //     borderRadius: BorderRadius.all(Radius.circular(15))),
+        decoration: BoxDecoration(
+            color: Color(0xFFDAE9E4),
+            borderRadius: BorderRadius.all(Radius.circular(5))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.start,
